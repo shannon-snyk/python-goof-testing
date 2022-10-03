@@ -8,9 +8,8 @@ jobs:
       - name: install snyk + snyk delta
         run: |
           npm install --location=global snyk
-          snyk auth ${SNYK_TOKEN}
+          snyk auth ${{ secrets.SNYK_TOKEN }}
           npm install --location=global snyk-delta
       - name: Snyk Delta Test
-        run: snyk test --json --print-deps | snyk-delta --baselineOrg --orgID 39e138ee-1e91-4197-9c08-31d4b6fc07a7 --baselineProject 9d7a0541-a2c2-4a30-8ca2-e44fc941054b
-        env:
-           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk test --json --print-deps | snyk-delta --baselineOrg --orgID 6e5f5718-4f6d-46dc-a71d-1c6832367c1d --baselineProject 9d7a0541-a2c2-4a30-8ca2-e44fc941054b
+
